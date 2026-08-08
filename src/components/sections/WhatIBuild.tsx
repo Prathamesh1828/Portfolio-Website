@@ -1,5 +1,27 @@
+"use client";
+
 import { Section } from "@/components/ui/Section";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+} as any;
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.5, ease: "easeOut" } 
+  },
+} as any;
 
 const areas = [
   {
@@ -26,21 +48,28 @@ export function WhatIBuild() {
       <div className="flex flex-col gap-8">
         <h2 className="text-3xl font-bold tracking-tight">What I Build</h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {areas.map((area, index) => (
-            <GlassCard 
-              key={index} 
-              className="p-6 transition-all duration-300 hover:scale-[1.02] hover:bg-white/5 cursor-default group"
-            >
-              <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-cyan-400 transition-colors">
-                {area.title}
-              </h3>
-              <p className="text-sm text-zinc-400 leading-relaxed">
-                {area.description}
-              </p>
-            </GlassCard>
+            <motion.div key={index} variants={itemVariants}>
+              <GlassCard 
+                className="p-6 transition-all duration-300 hover:scale-[1.02] hover:bg-white/5 cursor-default group h-full"
+              >
+                <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-cyan-400 transition-colors">
+                  {area.title}
+                </h3>
+                <p className="text-sm text-zinc-400 leading-relaxed">
+                  {area.description}
+                </p>
+              </GlassCard>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </Section>
   );

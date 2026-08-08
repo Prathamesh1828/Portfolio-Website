@@ -57,18 +57,18 @@ export function Hero() {
     visible: { 
       opacity: 1,
       transition: { 
-        staggerChildren: 0.1,
-        delayChildren: 0.2
+        staggerChildren: 0.15,
+        delayChildren: 0.4
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
     }
   } as any;
 
@@ -77,7 +77,7 @@ export function Hero() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 py-24 md:py-32"
+      className="relative flex flex-col items-center justify-center overflow-hidden px-6 pt-32 pb-12 md:pt-48 md:pb-16"
       id="home"
     >
       <BackgroundEffects />
@@ -200,9 +200,9 @@ export function Hero() {
 
           {/* Right Column: 3D Visual */}
           <motion.div
-             initial={{ opacity: 0, scale: 0.9 }}
-             animate={{ opacity: 1, scale: 1 }}
-             transition={{ duration: 1.5, ease: "easeOut" }}
+             initial={{ opacity: 0, scale: 0.85, filter: "blur(10px)" }}
+             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
              className="relative flex justify-center lg:justify-end order-1 lg:order-2 w-full"
           >
             <div className="w-full max-w-[500px] xl:max-w-[600px] flex justify-center items-center">
@@ -212,36 +212,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20 group"
-        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-      >
-        <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 group-hover:text-cyan-400 transition-colors duration-300">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <FiChevronDown className="w-5 h-5 text-zinc-600 group-hover:text-cyan-400 transition-colors duration-300" />
-        </motion.div>
-      </motion.div>
-
-      {/* Footer Info Banner */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-10 w-full max-w-7xl px-6 flex justify-between items-center text-[10px] uppercase tracking-[0.4em] text-zinc-600 pointer-events-none"
-      >
-        <span className="hidden md:block">Est. 2024</span>
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-[1px] h-16 bg-gradient-to-b from-zinc-600 to-transparent" />
-        </div>
-        <span className="hidden md:block">Mumbai, India</span>
-      </motion.div>
     </section>
   );
 }

@@ -6,7 +6,7 @@ import { Mail, Send } from "lucide-react";
 
 export function Contact() {
   return (
-    <Section id="contact" delay={0.6} className="py-24 min-h-[80vh] flex items-center">
+    <Section id="contact" delay={0.6} className="min-h-[80vh] flex items-center">
       <div className="w-full flex flex-col md:flex-row gap-12 items-center">
         <div className="w-full md:w-1/2 space-y-6">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">

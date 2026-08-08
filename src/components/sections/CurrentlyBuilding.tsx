@@ -4,7 +4,7 @@ import { ArrowRight, Hammer } from "lucide-react";
 
 export function CurrentlyBuilding() {
   return (
-    <Section id="currently-building" delay={0.5} className="py-24">
+    <Section id="currently-building" delay={0.5}>
       <div className="flex flex-col gap-6">
         <h2 className="text-3xl font-bold tracking-tight flex items-center gap-3">
           <Hammer className="w-8 h-8 text-zinc-500" />

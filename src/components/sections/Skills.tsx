@@ -4,7 +4,7 @@ import { skills } from "@/data/skills";
 
 export function Skills() {
   return (
-    <Section id="skills" delay={0.3} className="py-24">
+    <Section id="skills" delay={0.3}>
       <div className="flex flex-col gap-8">
         <h2 className="text-3xl font-bold tracking-tight">Technical Skills</h2>
         

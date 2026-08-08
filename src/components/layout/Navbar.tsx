@@ -40,7 +40,7 @@ export function Navbar() {
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       className="fixed top-6 inset-x-0 z-50 flex justify-center px-6 pointer-events-none"
     >
       <nav

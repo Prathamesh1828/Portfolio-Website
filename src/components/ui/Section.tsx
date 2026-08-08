@@ -21,7 +21,7 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.5, delay }}
         className={cn(
-          "w-full max-w-5xl mx-auto px-6 py-24 md:py-32 flex flex-col gap-8",
+          "w-full max-w-5xl mx-auto px-6 py-12 md:py-16 flex flex-col gap-8",
           className
         )}
         {...props}
