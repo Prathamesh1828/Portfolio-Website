@@ -11,18 +11,18 @@ export function CurrentlyBuilding() {
           Currently Building
         </h2>
         
-        <GlassCard className="border-l-4 border-l-emerald-500">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2">
-              <h3 className="text-xl font-bold text-white">AI-Powered Revenue Automation</h3>
-              <p className="text-zinc-400 text-sm max-w-xl leading-relaxed">
-                I'm currently architecting Kalash Platform, an AI-powered revenue automation platform 
-                automating marketing campaigns, sales pipelines, and customer lifecycle workflows.
+        <GlassCard>
+          <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-blue-500 to-cyan-400" />
+          <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
+            <div className="space-y-3 max-w-3xl">
+              <h3 className="text-xl font-bold text-white">InboxPilot</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Developing a production-inspired AI agent that transforms an inbox into an autonomous workflow system. The agent intelligently classifies emails, plans multi-step actions, invokes external tools, and automates low-risk tasks while routing irreversible actions through a human approval workflow. Users receive real-time approval requests and notifications via Telegram and WhatsApp, enabling secure, on-the-go decision making. Built with a safety-first architecture featuring confidence thresholding, audit trails, asynchronous processing, and seamless integrations with Gmail and Google Calendar.
               </p>
             </div>
             
             <a 
-              href="https://github.com/Prathamesh1828" 
+              href="#" 
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors text-sm font-medium whitespace-nowrap"

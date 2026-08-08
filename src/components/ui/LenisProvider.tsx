@@ -27,7 +27,7 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       if (!anchor) return;
       
       const href = anchor.getAttribute('href');
-      if (href && href.startsWith('#')) {
+      if (href && href.startsWith('#') && href !== '#') {
         e.preventDefault();
         const element = document.querySelector(href) as HTMLElement;
         if (element) {

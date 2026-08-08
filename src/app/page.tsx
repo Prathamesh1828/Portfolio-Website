@@ -19,6 +19,7 @@ export default function Home() {
       <WhatIBuild />
       <FeaturedProject />
       <Projects />
+      <CurrentlyBuilding />
       <Skills />
       <Suspense fallback={
         <div className="w-full max-w-5xl mx-auto px-6 py-12 md:py-16 min-h-[300px] flex items-center justify-center">
@@ -34,7 +35,6 @@ export default function Home() {
       }>
         <LeetcodeActivity />
       </Suspense>
-      <CurrentlyBuilding />
       <Contact />
     </>
   );
