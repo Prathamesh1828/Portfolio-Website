@@ -6,42 +6,41 @@ export interface Project {
   githubLink?: string;
   liveLink?: string;
   imagePath: string;
+  videoPath?: string;
 }
 
 export const projects: Project[] = [
   {
-    id: "ai-workout-generator",
-    title: "AI Workout Plan Generator",
-    description: "An intelligent platform that generates personalized workout routines based on user goals, equipment availability, and fitness levels using LLMs.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API", "Prisma", "PostgreSQL"],
-    githubLink: "https://github.com/yourusername/ai-workout",
-    liveLink: "https://ai-workout-demo.com",
-    imagePath: "/projects/workout-generator.jpg", // Placeholder image path
+    id: "replylink",
+    title: "ReplyLink",
+    description: "AI-powered Instagram automation platform for creators and businesses, automating comments, DMs, and story interactions while using AI to handle conversations, answer FAQs, and turn engagement into customers.",
+    techStack: ["Python", "FastAPI", "Supabase", "Instagram Graph API", "Webhooks", "RAG", "LLMs", "AI automation"],
+    githubLink: "https://github.com/Prathamesh1828/ReplyLink",
+    liveLink: "https://replylink.vercel.app/",
+    imagePath: "/projects/ReplyLink_ss.png",
+    videoPath: "/projects/ReplyLink_Merge.mp4",
   },
   {
-    id: "ecommerce-dashboard",
-    title: "E-Commerce Analytics Dashboard",
-    description: "A comprehensive real-time dashboard for e-commerce businesses to track sales, inventory, and customer behavior with interactive charts.",
-    techStack: ["React", "Node.js", "Express", "MongoDB", "Recharts", "Socket.io"],
-    githubLink: "https://github.com/yourusername/ecommerce-dash",
-    imagePath: "/projects/ecommerce-dash.jpg", // Placeholder image path
+    id: "stoxiq",
+    title: "StoxIQ",
+    description: "AI-Powered Market Intelligence Platform leveraging robust data pipelines and AI processing to deliver actionable market insights.",
+    techStack: ["Python", "data pipelines", "APIs", "backend architecture", "market intelligence", "AI/data processing"],
+    githubLink: "https://github.com/Prathamesh1828",
+    imagePath: "/projects/ecommerce-dash.jpg",
   },
   {
-    id: "smart-task-manager",
-    title: "Smart Task Manager",
-    description: "A productivity app that automatically categorizes and prioritizes tasks using natural language processing.",
-    techStack: ["React Native", "Firebase", "Google Cloud NLP", "Redux"],
-    githubLink: "https://github.com/yourusername/smart-tasks",
-    liveLink: "https://smarttask.app",
-    imagePath: "/projects/smart-tasks.jpg", // Placeholder image path
+    id: "eduable",
+    title: "EduAble",
+    description: "An AI-powered accessibility-first learning platform providing adaptive workflows, multimodal content, and AI-generated transcripts for inclusive education.",
+    techStack: ["React", "AI APIs", "Accessibility Systems"],
+    githubLink: "https://github.com/Prathamesh1828",
+    imagePath: "/projects/workout-generator.jpg",
   },
   {
-    id: "developer-portfolio",
-    title: "Minimalist Developer Portfolio",
-    description: "A highly optimized, accessible, and elegant personal portfolio built to showcase projects and technical skills.",
-    techStack: ["Next.js", "Tailwind CSS", "Framer Motion", "Vercel"],
-    githubLink: "https://github.com/yourusername/portfolio",
-    liveLink: "https://yourportfolio.com",
-    imagePath: "/projects/portfolio.jpg", // Placeholder image path
+    id: "freelance-automations",
+    title: "Freelance Automations",
+    description: "Workflow automation for medical inventory, gym membership management, and AI voice assistants to streamline clinic inquiries.",
+    techStack: ["n8n", "AI Workflows", "Webhooks", "REST APIs"],
+    imagePath: "/projects/portfolio.jpg", 
   }
 ];

@@ -10,25 +10,30 @@ export function About() {
         <GlassCard className="grid gap-6 md:grid-cols-2">
           <div className="space-y-4 text-zinc-400 leading-relaxed text-sm md:text-base">
             <p>
-              I'm a passionate Full Stack Developer with over 5 years of experience building 
-              scalable web applications. My journey started with a curiosity about how things 
-              work on the internet, which quickly evolved into a dedicated career in software engineering.
+              I'm an AI Engineer & Backend Developer currently pursuing a Bachelor of Engineering in Computer Science 
+              at Universal College of Engineering (2023–2027).
             </p>
             <p>
-              I love the entire process of bringing an idea to life, from architecture design to 
-              deployment. Recently, I've been heavily focused on integrating Artificial Intelligence 
-              into modern web applications to create smarter, more intuitive user experiences.
+              I enjoy building systems where AI meets real-world applications — from intelligent agents and RAG pipelines 
+              to automation platforms and scalable backend services.
+            </p>
+            <p>
+              My focus is on turning AI capabilities into useful, production-oriented software rather than building 
+              AI demos that exist only as experiments.
             </p>
           </div>
           <div className="space-y-4 text-zinc-400 leading-relaxed text-sm md:text-base">
             <p>
-              My expertise spans across the JavaScript/TypeScript ecosystem, with a deep focus on 
-              React, Next.js, and Node.js. When it comes to databases, I comfortably work with both 
-              SQL (PostgreSQL) and NoSQL (MongoDB) solutions.
+              I primarily work with Python, FastAPI, LLMs, REST APIs, databases, and modern AI frameworks. 
+              My work involves building AI agents, integrating LLMs into applications, designing backend architectures, 
+              and automating real-world workflows.
             </p>
             <p>
-              When I'm not coding, you can find me reading about new technologies, contributing to 
-              open-source projects, or exploring the outdoors.
+              I'm particularly interested in Generative AI, AI Agents, RAG, backend engineering, and intelligent automation.
+            </p>
+            <p>
+              Outside of building projects, I participate in hackathons, continuously explore emerging AI technologies, 
+              and enjoy turning ideas into working products.
             </p>
           </div>
         </GlassCard>

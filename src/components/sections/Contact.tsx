@@ -10,22 +10,21 @@ export function Contact() {
       <div className="w-full flex flex-col md:flex-row gap-12 items-center">
         <div className="w-full md:w-1/2 space-y-6">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Let's work <span className="text-zinc-500">together.</span>
+            Let's build something <span className="text-zinc-500">intelligent.</span>
           </h2>
           <p className="text-zinc-400 leading-relaxed max-w-md text-lg">
-            I'm currently available for freelance work and open to new full-time opportunities. 
-            If you have a project that needs some creative juice, I'd love to hear about it.
+            Have an AI, backend, or automation project in mind? Let's connect.
           </p>
           
           <div className="pt-4 flex flex-col gap-4">
             <a 
-              href="mailto:hello@example.com" 
+              href="mailto:prathameshcodes18@gmail.com" 
               className="flex items-center gap-3 text-zinc-300 hover:text-white transition-colors"
             >
               <div className="p-3 bg-white/5 rounded-full border border-white/10">
                 <Mail className="w-5 h-5" />
               </div>
-              <span className="text-lg font-medium">hello@example.com</span>
+              <span className="text-lg font-medium">prathameshcodes18@gmail.com</span>
             </a>
           </div>
         </div>
@@ -41,7 +40,7 @@ export function Contact() {
                   type="text" 
                   id="name"
                   className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-sans"
-                  placeholder="John Doe"
+                  placeholder="Prathamesh Jaiswar"
                 />
               </div>
               
@@ -53,7 +52,7 @@ export function Contact() {
                   type="email" 
                   id="email"
                   className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-sans"
-                  placeholder="john@example.com"
+                  placeholder="prathamesh@example.com"
                 />
               </div>
               
