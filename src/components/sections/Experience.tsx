@@ -18,7 +18,7 @@ export function Experience() {
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
             <div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
-                Automation Engineer Intern
+                AI & Automation Intern
               </h3>
               <p className="text-lg font-medium text-zinc-300">
                 Dhwaj Platform Pvt. Ltd. <span className="text-zinc-500 font-normal ml-2">| SalesPal</span>

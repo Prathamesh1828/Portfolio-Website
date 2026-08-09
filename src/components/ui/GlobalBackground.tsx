@@ -14,18 +14,28 @@ export function GlobalBackground() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        // Find the most intersecting entry
-        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
-        if (visibleEntries.length > 0) {
-          // Sort by intersection ratio to find the most prominent section
-          visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-          setActiveSection(visibleEntries[0].target.id);
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
       },
-      { threshold: [0.2, 0.5] } // Trigger at 20% and 50% visibility
+      { rootMargin: "-40% 0px -40% 0px" } // Trigger when a section passes the middle of the viewport
     );
 
-    const sections = ["currently-building", "github", "leetcode", "projects", "home"];
+    const sections = [
+      "home", 
+      "about", 
+      "experience", 
+      "what-i-build", 
+      "featured-project", 
+      "projects", 
+      "currently-building", 
+      "skills", 
+      "github", 
+      "leetcode", 
+      "contact"
+    ];
     const observed = new Set<string>();
 
     const interval = setInterval(() => {
