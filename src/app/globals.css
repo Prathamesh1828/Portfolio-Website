@@ -60,8 +60,24 @@ body {
   background: linear-gradient(135deg, var(--accent-indigo), var(--accent-purple), var(--accent-cyan));
 }
 
+@keyframes text-shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
 .text-gradient {
-  background: linear-gradient(to right, var(--accent-purple), var(--accent-cyan));
+  background: linear-gradient(to right, var(--accent-purple) 20%, var(--accent-cyan) 40%, #ffffff 50%, var(--accent-cyan) 60%, var(--accent-purple) 80%);
+  background-size: 200% auto;
+  animation: text-shine 8s ease-in-out infinite alternate;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-shimmer-white {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.4) 40%, #ffffff 50%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0.4) 80%);
+  background-size: 200% auto;
+  animation: text-shine 8s ease-in-out infinite alternate;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

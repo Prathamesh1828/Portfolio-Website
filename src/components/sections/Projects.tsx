@@ -41,7 +41,7 @@ export function Projects() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: false, margin: "-50px" }}
         >
           {otherProjects.map((project) => (
             <motion.div key={project.id} variants={itemVariants} className="h-full">

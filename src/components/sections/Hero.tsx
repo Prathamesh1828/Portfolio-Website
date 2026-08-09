@@ -114,7 +114,7 @@ export function Hero() {
               />
               
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight relative">
-                <span className="relative z-10 text-zinc-500 group-hover/text:text-white transition-colors duration-700">
+                <span className="relative z-10 text-shimmer-white">
                     Building <br />
                 </span>
                 <div className="relative h-[1.2em] overflow-visible mt-2">

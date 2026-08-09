@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { SocialBar } from "@/components/ui/SocialBar";
 import { LenisProvider } from "@/components/ui/LenisProvider";
+import { GlobalBackground } from "@/components/ui/GlobalBackground";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
+        <GlobalBackground />
         <LenisProvider>
           <CursorGlow />
           <SocialBar />

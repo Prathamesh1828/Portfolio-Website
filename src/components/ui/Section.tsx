@@ -18,7 +18,7 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
         id={id}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: false, margin: "-100px" }}
         transition={{ duration: 0.5, delay }}
         className={cn(
           "w-full max-w-5xl mx-auto px-6 py-12 md:py-16 flex flex-col gap-8",

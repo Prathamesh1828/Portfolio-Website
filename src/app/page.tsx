@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { Experience } from "@/components/sections/Experience";
 import { WhatIBuild } from "@/components/sections/WhatIBuild";
 import { FeaturedProject } from "@/components/sections/FeaturedProject";
 import { Projects } from "@/components/sections/Projects";
@@ -16,10 +17,11 @@ export default function Home() {
     <>
       <Hero />
       <About />
+      <Experience />
       <WhatIBuild />
       <FeaturedProject />
-      <Projects />
       <CurrentlyBuilding />
+      <Projects />
       <Skills />
       <Suspense fallback={
         <div className="w-full max-w-5xl mx-auto px-6 py-12 md:py-16 min-h-[300px] flex items-center justify-center">

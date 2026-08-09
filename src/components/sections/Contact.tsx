@@ -9,8 +9,10 @@ export function Contact() {
     <Section id="contact" delay={0.6} className="min-h-[80vh] flex items-center">
       <div className="w-full flex flex-col md:flex-row gap-12 items-center">
         <div className="w-full md:w-1/2 space-y-6">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Let's build something <span className="text-zinc-500">intelligent.</span>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight flex flex-col gap-1 md:gap-2">
+            <span className="text-white">Let&apos;s build</span>
+            <span className="text-zinc-400">something</span>
+            <span className="text-zinc-600">intelligent.</span>
           </h2>
           <p className="text-zinc-400 leading-relaxed max-w-md text-lg">
             Have an AI, backend, or automation project in mind? Let's connect.

@@ -53,7 +53,7 @@ export function WhatIBuild() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: false, margin: "-50px" }}
         >
           {areas.map((area, index) => (
             <motion.div key={index} variants={itemVariants}>
