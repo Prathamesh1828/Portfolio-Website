@@ -32,11 +32,11 @@ export function SocialBar() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1, duration: 0.8 }}
       className="fixed z-40 flex md:flex-col items-center gap-6 
-                 left-1/2 -translate-x-1/2 bottom-8 md:bottom-auto 
+                 left-1/2 -translate-x-1/2 bottom-4 md:bottom-auto 
                  md:left-8 md:top-1/2 md:-translate-y-1/2 
-                 bg-white/5 backdrop-blur-md md:bg-transparent md:backdrop-blur-none
-                 px-6 py-4 md:px-0 md:py-0 rounded-full md:rounded-none
-                 border border-white/10 md:border-none shadow-xl md:shadow-none"
+                 bg-white/10 backdrop-blur-md md:bg-transparent md:backdrop-blur-none
+                 px-6 py-3 md:px-0 md:py-0 rounded-full md:rounded-none
+                 border border-white/10 md:border-none shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] md:shadow-none"
     >
       {/* Top line (desktop only) */}
       <div className="hidden md:block w-px h-12 bg-gradient-to-t from-white/20 to-transparent" />

@@ -77,7 +77,7 @@ export function Hero() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative flex flex-col items-center justify-center overflow-hidden px-6 pt-32 pb-12 md:pt-48 md:pb-16"
+      className="relative flex flex-col items-center justify-center overflow-hidden px-4 md:px-6 pt-28 pb-24 md:pt-48 md:pb-16 min-h-[100svh] md:min-h-0"
       id="home"
     >
       <BackgroundEffects />
@@ -101,10 +101,10 @@ export function Hero() {
                <span>Open to AI / Backend Opportunities</span> 
             </motion.div>
 
-            <motion.div variants={itemVariants} className="space-y-4 mb-10 group/text relative">
+            <motion.div variants={itemVariants} className="space-y-4 mb-8 md:mb-10 group/text relative">
               {/* Spotlight Layer */}
               <motion.div 
-                className="absolute inset-0 pointer-events-none z-20 opacity-0 group-hover/text:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 pointer-events-none z-20 opacity-0 group-hover/text:opacity-100 transition-opacity duration-500 hidden md:block"
                 style={{
                     background: useTransform(
                         [mouseX, mouseY],
@@ -113,11 +113,11 @@ export function Hero() {
                 }}
               />
               
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight relative">
+              <h1 className="text-[clamp(3rem,9vw,4.5rem)] font-bold tracking-tight text-white leading-[1.1] relative [text-wrap:balance]">
                 <span className="relative z-10 text-shimmer-white">
                     Building <br />
                 </span>
-                <div className="relative h-[1.2em] overflow-visible mt-2">
+                <div className="relative h-[1.2em] overflow-visible mt-1 md:mt-2">
                     <motion.span
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
@@ -132,7 +132,7 @@ export function Hero() {
 
             <motion.p 
               variants={itemVariants}
-              className="text-lg md:text-xl text-zinc-400 mb-12 leading-relaxed font-light transition-colors duration-500 group-hover/text:text-zinc-200"
+              className="text-base md:text-xl text-zinc-400 mb-10 leading-relaxed font-light transition-colors duration-500 group-hover/text:text-zinc-200"
             >
               Hi, I&apos;m <span className="text-white font-medium">Prathamesh Jaiswar</span>, 
               an AI Engineer focused on Agentic AI, Generative AI, backend engineering, and intelligent automation. I build production-ready AI systems that connect LLMs, APIs, data, and real-world workflows.
@@ -140,7 +140,7 @@ export function Hero() {
 
             <motion.div 
               variants={itemVariants}
-              className="flex flex-wrap lg:flex-nowrap items-center gap-3 lg:gap-4"
+              className="flex flex-col sm:flex-row flex-wrap items-center gap-3 md:gap-4 w-full"
             >
               <motion.a 
                 href="#projects"
@@ -150,7 +150,7 @@ export function Hero() {
                   backgroundColor: "#FFFFFF"
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-bold transition-all duration-300 min-w-[140px]"
+                className="group relative flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-bold transition-all duration-300 w-full sm:w-auto sm:min-w-[140px]"
               >
                 Explore Projects
                 <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -165,7 +165,7 @@ export function Hero() {
                   boxShadow: "0 0 40px rgba(255, 255, 255, 0.1)"
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/10 bg-transparent text-white font-bold transition-all duration-300 min-w-[140px]"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/10 bg-transparent text-white font-bold transition-all duration-300 w-full sm:w-auto sm:min-w-[140px]"
               >
                 <FiMail className="w-5 h-5" />
                 Let&apos;s Connect
@@ -182,7 +182,7 @@ export function Hero() {
                   boxShadow: "0 0 40px rgba(255, 255, 255, 0.1)"
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="group flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/10 bg-transparent text-white font-bold transition-all duration-300 min-w-[140px]"
+                className="group flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/10 bg-transparent text-white font-bold transition-all duration-300 w-full sm:w-auto sm:min-w-[140px]"
               >
                 <div className="relative w-5 h-5 flex items-center justify-center overflow-visible">
                     <motion.div

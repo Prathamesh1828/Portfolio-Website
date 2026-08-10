@@ -141,7 +141,7 @@ function OrbContent() {
 
 export function NeuralOrb() {
   return (
-    <div className="relative w-full h-[300px] md:h-[600px] flex items-center justify-center">
+    <div className="relative w-full h-[320px] md:h-[500px] lg:h-[600px] flex items-center justify-center">
         {/* Soft radial glow behind the orb */}
         <div className="absolute inset-0 bg-orb-glow pointer-events-none" />
         

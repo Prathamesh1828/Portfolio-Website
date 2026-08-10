@@ -130,7 +130,7 @@ export default async function LeetcodeActivity() {
           <h2 className="text-3xl font-bold tracking-tight">LeetCode Activity</h2>
         </div>
         
-        <GlassCard className="p-8 overflow-x-auto relative min-h-[200px]">
+        <GlassCard className="p-5 md:p-8 overflow-x-auto overflow-y-hidden touch-pan-x relative min-h-[200px] w-full max-w-full">
           {!calendarData ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                <div className="w-6 h-6 rounded-full border-2 border-white/10 border-t-white/40 animate-spin" />
