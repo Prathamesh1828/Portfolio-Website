@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 
 const socials = [
@@ -16,12 +16,6 @@ const socials = [
     icon: FiLinkedin,
     href: "https://www.linkedin.com/in/prathamesh-jaiswar/",
     aria: "Connect with me on LinkedIn",
-  },
-  {
-    name: "Instagram",
-    icon: FiInstagram,
-    href: "https://www.instagram.com/__prattham/",
-    aria: "Follow me on Instagram",
   },
 ];
 
