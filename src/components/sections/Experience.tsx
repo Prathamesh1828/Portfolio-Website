@@ -73,7 +73,7 @@ export function Experience() {
               View Offer Letter
             </button>
             <a
-              href="https://salespal.io"
+              href="https://salespal.in"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-zinc-400 hover:text-white transition-colors flex items-center gap-2"
