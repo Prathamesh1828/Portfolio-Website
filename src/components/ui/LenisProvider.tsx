@@ -7,13 +7,16 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
     const lenis = new Lenis({
-      lerp: 0.05,
+      lerp: isMobile ? 0.1 : 0.05,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: isMobile ? 1.5 : 2,
       syncTouch: true,
     });
     lenisRef.current = lenis;
+    // @ts-expect-error - Expose lenis globally for components like Navbar
+    window.__lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -42,6 +45,8 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     return () => {
       document.removeEventListener('click', handleAnchorClick);
       lenis.destroy();
+      // @ts-expect-error
+      delete window.__lenis;
     };
   }, []);
 

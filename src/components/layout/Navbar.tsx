@@ -85,7 +85,9 @@ export function Navbar() {
                 href={link.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                  // @ts-expect-error
+                  if (window.__lenis) window.__lenis.scrollTo(link.href, { duration: 1.2 });
+                  else document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className={cn(
                   "relative px-3 py-1 text-sm font-medium transition-all duration-300 rounded-full",
@@ -161,7 +163,9 @@ export function Navbar() {
                     e.preventDefault();
                     setIsMobileMenuOpen(false);
                     setTimeout(() => {
-                      document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                      // @ts-expect-error
+                      if (window.__lenis) window.__lenis.scrollTo(link.href, { duration: 1.2 });
+                      else document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
                     }, 300);
                   }}
                   className={cn(
