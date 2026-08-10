@@ -8,7 +8,7 @@ const links = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
+  { name: "Projects", href: "#featured-project" },
   { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" },
 ];
@@ -20,51 +20,33 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Section tracking via IntersectionObserver
-  useEffect(() => {
-    const sections = links.map((link) => link.href.substring(1));
-    const observed = new Set<string>();
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Process intersecting entries
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        // Trigger when a section passes the middle of the viewport
-        rootMargin: "-40% 0px -40% 0px"
-      }
-    );
-
-    const interval = setInterval(() => {
-      sections.forEach((id) => {
-        if (!observed.has(id)) {
-          const el = document.getElementById(id);
-          if (el) {
-            observer.observe(el);
-            observed.add(id);
+      const sections = links.map((link) => link.href.substring(1));
+      let current = "";
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // If the top of the section is above the middle of the screen
+          if (rect.top <= window.innerHeight / 3) {
+            current = section;
           }
         }
-      });
-      if (observed.size === sections.length) {
-        clearInterval(interval);
       }
-    }, 500);
-
-    return () => {
-      clearInterval(interval);
-      observer.disconnect();
+      
+      if (current) {
+        setActiveSection(current);
+      } else {
+        setActiveSection("home");
+      }
     };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Trigger once on mount
+    handleScroll();
+    
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (

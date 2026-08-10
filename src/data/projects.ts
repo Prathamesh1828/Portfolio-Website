@@ -5,7 +5,7 @@ export interface Project {
   techStack: string[];
   githubLink?: string;
   liveLink?: string;
-  imagePath: string;
+  imagePath?: string;
   videoPath?: string;
 }
 
@@ -21,26 +21,19 @@ export const projects: Project[] = [
     videoPath: "/projects/ReplyLink_Merge.mp4",
   },
   {
-    id: "stoxiq",
-    title: "StoxIQ",
-    description: "AI-Powered Market Intelligence Platform leveraging robust data pipelines and AI processing to deliver actionable market insights.",
-    techStack: ["Python", "data pipelines", "APIs", "backend architecture", "market intelligence", "AI/data processing"],
+    id: "nutrisnap",
+    title: "NutriSnap",
+    description: "AI-powered fitness and nutrition platform that uses Gemini to analyze meals, deliver nutritional insights, track fitness progress in real time, and provide personalized coaching experiences.",
+    techStack: ["Next.js", "Gemini AI", "MongoDB", "Socket.io", "Razorpay"],
     githubLink: "https://github.com/Prathamesh1828",
-    imagePath: "/projects/ecommerce-dash.jpg",
+    liveLink: "https://nutrisnap-eight.vercel.app/",
+    imagePath: "/projects/Nutrisnap_ss.png",
   },
   {
-    id: "eduable",
-    title: "EduAble",
-    description: "An AI-powered accessibility-first learning platform providing adaptive workflows, multimodal content, and AI-generated transcripts for inclusive education.",
-    techStack: ["React", "AI APIs", "Accessibility Systems"],
-    githubLink: "https://github.com/Prathamesh1828",
-    imagePath: "/projects/workout-generator.jpg",
-  },
-  {
-    id: "freelance-automations",
-    title: "Freelance Automations",
-    description: "Workflow automation for medical inventory, gym membership management, and AI voice assistants to streamline clinic inquiries.",
-    techStack: ["n8n", "AI Workflows", "Webhooks", "REST APIs"],
-    imagePath: "/projects/portfolio.jpg", 
+    id: "careerpath-ai",
+    title: "CareerPath-AI",
+    description: "AI-powered career recommendation platform that analyzes skills, academic performance, and interests to provide personalized career paths, identify skill gaps, and recommend relevant learning resources.",
+    techStack: ["React", "Node.js", "MongoDB", "Python", "Gemini AI"],
+    githubLink: "https://github.com/Prathamesh1828/CareerPath-AI",
   }
 ];

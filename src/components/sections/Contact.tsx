@@ -42,7 +42,7 @@ export function Contact() {
                   type="text" 
                   id="name"
                   className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-sans"
-                  placeholder="Prathamesh Jaiswar"
+                  placeholder="John Doe"
                 />
               </div>
               
@@ -54,7 +54,7 @@ export function Contact() {
                   type="email" 
                   id="email"
                   className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-sans"
-                  placeholder="prathamesh@example.com"
+                  placeholder="john@example.com"
                 />
               </div>
               

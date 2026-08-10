@@ -37,7 +37,7 @@ export function Projects() {
         <h2 className="text-3xl font-bold tracking-tight">Other Noteworthy Projects</h2>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto w-full"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -45,46 +45,62 @@ export function Projects() {
         >
           {otherProjects.map((project) => (
             <motion.div key={project.id} variants={itemVariants} className="h-full">
-              <GlassCard hoverEffect className="flex flex-col h-full gap-5">
-                <div className="flex justify-between items-start">
-                  <FolderGit2 className="w-10 h-10 text-zinc-500" />
-                  <div className="flex gap-3">
-                    {project.githubLink && (
-                      <a 
-                        href={project.githubLink} 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        className="text-zinc-400 hover:text-white transition-colors"
-                      >
-                        <FiGithub className="w-5 h-5" />
-                        <span className="sr-only">GitHub</span>
-                      </a>
-                    )}
-                    {project.liveLink && (
-                      <a 
-                        href={project.liveLink} 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        className="text-zinc-400 hover:text-white transition-colors"
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                        <span className="sr-only">Live Link</span>
-                      </a>
-                    )}
+              <GlassCard hoverEffect className="group relative flex flex-col h-full overflow-hidden border-white/5">
+                {/* Background Image with Dark Overlay */}
+                {project.imagePath && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                      style={{ backgroundImage: `url(${project.imagePath})` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#020617]/85 via-[#020617]/70 to-[#020617]/50 group-hover:from-[#020617]/75 group-hover:via-[#020617]/60 group-hover:to-[#020617]/40 transition-colors duration-500" />
+                  </>
+                )}
+                
+                {/* Content Container (z-10 to stay above background) */}
+                <div className="relative z-10 flex flex-col h-full gap-5 p-2">
+                  <div className="flex justify-between items-start">
+                    <FolderGit2 className="w-10 h-10 text-zinc-500 group-hover:text-cyan-500/70 transition-colors duration-500" />
+                    <div className="flex gap-3">
+                      {project.githubLink && (
+                        <a 
+                          href={project.githubLink} 
+                          target="_blank" 
+                          rel="noreferrer" 
+                          className="text-zinc-400 hover:text-white transition-colors"
+                        >
+                          <FiGithub className="w-5 h-5" />
+                          <span className="sr-only">GitHub</span>
+                        </a>
+                      )}
+                      {project.liveLink && (
+                        <a 
+                          href={project.liveLink} 
+                          target="_blank" 
+                          rel="noreferrer" 
+                          className="text-zinc-400 hover:text-white transition-colors"
+                        >
+                          <ExternalLink className="w-5 h-5" />
+                          <span className="sr-only">Live Link</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex-grow space-y-3">
-                  <h3 className="text-xl font-bold text-zinc-100">{project.title}</h3>
-                  <p className="text-sm text-zinc-400 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-                
-                <div className="flex flex-wrap gap-x-3 gap-y-2 mt-auto pt-4 text-xs font-mono text-zinc-500">
-                  {project.techStack.map(tech => (
-                    <span key={tech}>{tech}</span>
-                  ))}
+                  
+                  <div className="flex-grow space-y-3">
+                    <h3 className="text-xl font-bold text-zinc-100 group-hover:text-white transition-colors">{project.title}</h3>
+                    <p className="text-sm text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors">
+                      {project.description}
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-x-3 gap-y-2 mt-auto pt-4 border-t border-white/5 text-xs font-medium text-zinc-500">
+                    {project.techStack.map(tech => (
+                      <span key={tech} className="px-2 py-1 rounded-full bg-white/5 border border-white/10 group-hover:border-white/20 group-hover:text-zinc-300 transition-all duration-300">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </GlassCard>
             </motion.div>
