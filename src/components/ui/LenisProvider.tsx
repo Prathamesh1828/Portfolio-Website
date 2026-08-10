@@ -8,9 +8,10 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.1,
+      lerp: 0.05,
       wheelMultiplier: 1,
       touchMultiplier: 2,
+      syncTouch: true,
     });
     lenisRef.current = lenis;
 

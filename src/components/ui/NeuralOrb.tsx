@@ -25,7 +25,7 @@ function OrbContent() {
   const orbitalRef = useRef<THREE.Group>(null);
 
   // Procedural node generation
-  const nodeCount = 120;
+  const nodeCount = 80;
   const nodes = useMemo(() => {
     const positions = new Float32Array(nodeCount * 3);
     const nodeArray: THREE.Vector3[] = [];
@@ -50,7 +50,7 @@ function OrbContent() {
   // Neural network connections based on distance threshold
   const connections = useMemo(() => {
     const linePairs: THREE.Vector3[][] = [];
-    const threshold = 1.2;
+    const threshold = 1.1;
     
     for (let i = 0; i < nodes.nodeArray.length; i++) {
         for (let j = i + 1; j < nodes.nodeArray.length; j++) {
@@ -145,7 +145,7 @@ export function NeuralOrb() {
         {/* Soft radial glow behind the orb */}
         <div className="absolute inset-0 bg-orb-glow pointer-events-none" />
         
-        <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
+        <Canvas dpr={[1, 1.5]} performance={{ min: 0.5 }} camera={{ position: [0, 0, 8], fov: 45 }}>
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} intensity={1} color="#7C3AED" />
             <OrbContent />
