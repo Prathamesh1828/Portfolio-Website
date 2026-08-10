@@ -113,20 +113,18 @@ export function Hero() {
                 }}
               />
               
-              <h1 className="text-[clamp(3rem,9vw,4.5rem)] font-bold tracking-tight text-white leading-[1.1] relative [text-wrap:balance]">
-                <span className="relative z-10 text-shimmer-white">
-                    Building <br />
+              <h1 className="text-[clamp(2.5rem,8vw,4.5rem)] font-bold tracking-tight text-white leading-[1.1] relative">
+                <span className="relative z-10 text-shimmer-white block mb-1 md:mb-2">
+                    Building
                 </span>
-                <div className="relative h-[1.2em] overflow-visible mt-1 md:mt-2">
-                    <motion.span
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.5, ease: "circOut" }}
-                      className="absolute left-0 top-0 text-gradient whitespace-nowrap"
-                    >
-                      {words[index]}
-                    </motion.span>
-                </div>
+                <motion.span
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, ease: "circOut" }}
+                  className="inline-block text-gradient [text-wrap:balance]"
+                >
+                  {words[index]}
+                </motion.span>
               </h1>
             </motion.div>
 
