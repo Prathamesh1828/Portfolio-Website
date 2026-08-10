@@ -6,7 +6,7 @@ export interface SkillCategory {
 export const skills: SkillCategory[] = [
   {
     title: "AI & Generative AI",
-    skills: ["LLMs", "RAG", "AI Agents", "LangChain", "LangGraph", "Embeddings", "Vector Search", "Prompt Engineering"],
+    skills: ["LLMs", "AI Agents", "RAG", "LangChain", "LangGraph", "Prompt Engineering", "Embeddings", "Vector Search"],
   },
   {
     title: "Backend Engineering",
