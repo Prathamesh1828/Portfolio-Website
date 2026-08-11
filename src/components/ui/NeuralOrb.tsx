@@ -65,11 +65,11 @@ function OrbContent() {
 
   // Tech Logo nodes distribution
   const techNodes = useMemo(() => {
-    // Select evenly distributed indices on the sphere for the 10 logos
-    const indices = [5, 17, 29, 41, 55, 67, 79, 91, 103, 115];
+    // Select evenly distributed indices on the sphere for the 10 logos (max index 79)
+    const indices = [4, 12, 20, 28, 36, 44, 52, 60, 68, 76];
     return techLogos.map((tech, i) => ({
       ...tech,
-      position: nodes.nodeArray[indices[i % nodes.nodeArray.length]]
+      position: nodes.nodeArray[indices[i % indices.length]]
     }));
   }, [nodes]);
 
