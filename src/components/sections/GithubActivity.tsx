@@ -44,7 +44,7 @@ async function getContributions() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ query }),
-      next: { revalidate: 600 } // Revalidate every 10 minutes
+      cache: "no-store" // Opt out of caching to ensure data is always fresh
     });
 
     if (!response.ok) {

@@ -32,7 +32,7 @@ async function getLeetCodeData() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ query, variables: { username: LEETCODE_USERNAME } }),
-      next: { revalidate: 3600 } // Revalidate every hour to not spam the API
+      cache: "no-store" // Opt out of caching to ensure data is always fresh
     });
 
     if (!response.ok) {
@@ -63,7 +63,10 @@ export default async function LeetcodeActivity() {
     for (const [timestamp, count] of Object.entries(submissionMap)) {
       totalSubmissions += count as number;
       const date = new Date(parseInt(timestamp) * 1000);
-      const dateString = date.toISOString().split('T')[0];
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const dateString = `${year}-${month}-${day}`;
       dailyCounts[dateString] = count as number;
     }
 
@@ -77,7 +80,10 @@ export default async function LeetcodeActivity() {
     for (let i = 0; i < 364; i++) {
       const date = new Date(startDate);
       date.setDate(startDate.getDate() + i);
-      const dateString = date.toISOString().split('T')[0];
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const dateString = `${year}-${month}-${day}`;
       
       const count = dailyCounts[dateString] || 0;
       if (count > maxCount) maxCount = count;
