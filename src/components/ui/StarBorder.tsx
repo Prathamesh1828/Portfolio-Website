@@ -11,7 +11,7 @@ interface StarBorderProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const StarBorder = ({
-  as: Component = 'div',
+  as = 'div',
   className = '',
   color = 'white',
   speed = '6s',
@@ -19,6 +19,7 @@ const StarBorder = ({
   children,
   ...rest
 }: StarBorderProps) => {
+  const Component = as as any;
   return (
     <Component
       className={`star-border-container ${className}`}
