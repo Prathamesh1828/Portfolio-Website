@@ -21,6 +21,14 @@ export const projects: Project[] = [
     videoPath: "/projects/ReplyLink_Merge.mp4",
   },
   {
+    id: "secure-ai-support-orchestrator",
+    title: "Secure AI Customer Support Orchestrator",
+    description: "A highly secure, production-grade Tier-1 support agent built for an e-commerce brand. Features a custom-built orchestrator engineered in pure Python for absolute control over LLM execution boundaries. Implements zero-leak data privacy, anti-hallucination conflict resolution, prompt injection defense, and lightweight TF-IDF retrieval.",
+    techStack: ["Python", "Groq API", "scikit-learn", "Regex", "Markdown", "JSON"],
+    githubLink: "https://github.com/Prathamesh1828/ai-agent-intern-test",
+    videoPath: "/projects/RAG Chatbot Demo video.mp4",
+  },
+  {
     id: "nutrisnap",
     title: "NutriSnap",
     description: "AI-powered fitness and nutrition platform that uses Gemini to analyze meals, deliver nutritional insights, track fitness progress in real time, and provide personalized coaching experiences.",

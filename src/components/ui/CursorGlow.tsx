@@ -104,12 +104,12 @@ export function CursorGlow() {
           translateX: "-50%",
           translateY: "-50%",
         }}
-        className="fixed top-0 left-0 pointer-events-none z-[100] hidden md:flex items-center justify-center mix-blend-difference"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:flex items-center justify-center mix-blend-difference"
       >
         <motion.div 
           animate={{
-            scale: isHovering ? 0 : 1,
-            opacity: isHovering ? 0 : 1
+            scale: isHovering ? 0.4 : 1,
+            opacity: 1
           }}
           transition={{ duration: 0.15 }}
           className="w-1.5 h-1.5 bg-white rounded-full"
@@ -124,7 +124,7 @@ export function CursorGlow() {
           translateX: "-50%",
           translateY: "-50%",
         }}
-        className="fixed top-0 left-0 pointer-events-none z-[100] hidden md:flex items-center justify-center mix-blend-difference"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:flex items-center justify-center mix-blend-difference"
       >
         <motion.div 
           animate={{

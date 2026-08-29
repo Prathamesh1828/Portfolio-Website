@@ -21,6 +21,8 @@ export function FeaturedProject() {
   const [duration, setDuration] = useState(0);
   
   const videoRef = useRef<HTMLVideoElement>(null);
+  // Tracks the in-flight play() Promise so we never call pause() before it resolves
+  const playPromiseRef = useRef<Promise<void> | null>(null);
 
   if (!featured) return null;
 
@@ -37,6 +39,44 @@ export function FeaturedProject() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isModalOpen]);
 
+  // ------- safe play / pause helpers -------
+  // Returns a promise so callers can await if needed.
+  const safePlay = () => {
+    if (!videoRef.current) return;
+    const promise = videoRef.current.play();
+    if (promise !== undefined) {
+      playPromiseRef.current = promise;
+      promise
+        .then(() => { playPromiseRef.current = null; })
+        .catch((err) => {
+          playPromiseRef.current = null;
+          // AbortError means something cancelled it (e.g. modal close) – not an app bug.
+          if (err?.name !== 'AbortError') console.error('Video play error:', err);
+        });
+    }
+  };
+
+  const safePause = () => {
+    if (!videoRef.current) return;
+    if (playPromiseRef.current) {
+      // Wait for an in-flight play() to settle before pausing to avoid AbortError.
+      playPromiseRef.current
+        .then(() => { videoRef.current?.pause(); })
+        .catch(() => {});
+    } else {
+      videoRef.current.pause();
+    }
+  };
+  // -------------------------------------------
+
+  // Auto-start playback when entering video mode (replaces the autoPlay attribute).
+  useEffect(() => {
+    if (isVideoMode && videoRef.current) {
+      safePlay();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVideoMode]);
+
   const closeModal = () => {
     setIsModalOpen(false);
     setIsVideoMode(false);
@@ -44,20 +84,24 @@ export function FeaturedProject() {
     setProgress(0);
     setPlaybackSpeed(1);
     setCurrentTime(0);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
+    safePause();
+    // Reset currentTime after pause settles
+    const vid = videoRef.current;
+    if (vid) {
+      Promise.resolve(playPromiseRef.current).finally(() => {
+        if (vid) vid.currentTime = 0;
+      });
     }
   };
 
+  // Drive play/pause from the button; read actual state from the element, not stale closure.
   const handlePlayPause = () => {
     if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
+    if (videoRef.current.paused) {
+      safePlay();
     } else {
-      videoRef.current.play();
+      safePause();
     }
-    setIsPlaying(!isPlaying);
   };
 
   const handleTimeUpdate = () => {
@@ -102,6 +146,7 @@ export function FeaturedProject() {
   };
 
   return (
+    <>
     <Section id="featured-project" delay={0.2}>
       <div className="flex flex-col gap-6">
         <h2 className="text-3xl font-bold tracking-tight">Featured Project</h2>
@@ -189,8 +234,9 @@ export function FeaturedProject() {
           </div>
         </GlassCard>
       </div>
+    </Section>
 
-      {/* Interactive Media Modal */}
+      {/* Interactive Media Modal — rendered OUTSIDE Section so whileInView animation cannot affect the video */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div 
@@ -206,7 +252,7 @@ export function FeaturedProject() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+              onClick={(e) => e.stopPropagation()}
             >
               <button 
                 onClick={closeModal}
@@ -218,7 +264,6 @@ export function FeaturedProject() {
               <div className="flex-grow relative bg-[#09090b] flex items-center justify-center w-full h-full">
                 {!isVideoMode ? (
                   <>
-                    {/* Full uncropped screenshot */}
                     {featured.imagePath && (
                       <Image 
                         src={featured.imagePath}
@@ -243,11 +288,11 @@ export function FeaturedProject() {
                     )}
                   </>
                 ) : (
-                  /* Video Player */
                   <video 
                     ref={videoRef}
                     src={featured.videoPath}
-                    autoPlay
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
                     onTimeUpdate={handleTimeUpdate}
                     onLoadedMetadata={handleLoadedMetadata}
                     onEnded={() => setIsPlaying(false)}
@@ -257,13 +302,11 @@ export function FeaturedProject() {
                 )}
               </div>
 
-              {/* Custom Video Controls */}
               {isVideoMode && (
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 transition-opacity duration-300">
-                  {/* Progress Bar Container */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 z-[30] bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2">
                   <div className="flex items-center gap-3 px-2 text-xs font-medium text-white/70">
                     <span>{formatTime(currentTime)}</span>
-                    <div className="relative flex-grow h-2 group cursor-pointer flex items-center">
+                    <div className="relative flex-grow h-5 cursor-pointer flex items-center">
                       <input 
                         type="range"
                         min="0"
@@ -273,18 +316,19 @@ export function FeaturedProject() {
                         onChange={handleSeek}
                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                       />
-                      {/* Track background */}
-                      <div className="absolute w-full h-1 bg-white/20 rounded-full overflow-hidden">
-                        {/* Track progress */}
+                      <div className="absolute inset-x-0 h-1.5 bg-white/25 rounded-full overflow-hidden">
                         <div 
-                          className="h-full bg-purple-500 rounded-full"
+                          className="h-full bg-purple-500 rounded-full transition-all duration-100"
                           style={{ width: `${progress}%` }}
                         />
                       </div>
-                      {/* Thumb indicator */}
                       <div 
-                        className="absolute h-3 w-3 bg-white rounded-full shadow-[0_0_10px_rgba(124,58,237,0.8)] transition-transform scale-0 group-hover:scale-100 -ml-1.5"
-                        style={{ left: `${progress}%` }}
+                        className="absolute z-20 w-4 h-4 bg-white rounded-full border-2 border-purple-400 shadow-[0_0_0_3px_rgba(168,85,247,0.4),0_0_12px_rgba(168,85,247,0.8)]"
+                        style={{ 
+                          left: `${progress}%`, 
+                          top: '50%',
+                          transform: 'translate(-50%, -50%)'
+                        }}
                       />
                     </div>
                     <span>{formatTime(duration)}</span>
@@ -320,6 +364,6 @@ export function FeaturedProject() {
           </motion.div>
         )}
       </AnimatePresence>
-    </Section>
+    </>
   );
 }
