@@ -26,7 +26,8 @@ export const projects: Project[] = [
     description: "A highly secure, production-grade Tier-1 support agent built for an e-commerce brand. Features a custom-built orchestrator engineered in pure Python for absolute control over LLM execution boundaries. Implements zero-leak data privacy, anti-hallucination conflict resolution, prompt injection defense, and lightweight TF-IDF retrieval.",
     techStack: ["Python", "Groq API", "scikit-learn", "Regex", "Markdown", "JSON"],
     githubLink: "https://github.com/Prathamesh1828/ai-agent-intern-test",
-    videoPath: "/projects/RAG Chatbot Demo video.mp4",
+    videoPath: "/projects/RAG demo video.mp4",
+    imagePath: "/projects/chatbot_video_thumbnail.avif",
   },
   {
     id: "nutrisnap",
