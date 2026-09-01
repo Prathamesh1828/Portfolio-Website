@@ -99,17 +99,19 @@ export default async function GithubActivity() {
     
     // Scale intensity (1-4) based on max contributions
     const ratio = count / maxCount;
-    if (ratio <= 0.25) return "bg-cyan-900/40";
-    if (ratio <= 0.5) return "bg-cyan-700/60";
-    if (ratio <= 0.75) return "bg-cyan-500/80";
-    return "bg-cyan-400";
+    if (ratio <= 0.25) return "bg-green-900/40";
+    if (ratio <= 0.5) return "bg-green-700/60";
+    if (ratio <= 0.75) return "bg-green-500/80";
+    return "bg-green-400";
   };
 
   return (
     <Section id="github" delay={0.4}>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-          <h2 className="text-3xl font-bold tracking-tight">GitHub Contributions</h2>
+          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
+            GitHub Contributions
+          </h2>
         </div>
         
         <GlassCard className="p-5 md:p-8 overflow-x-auto overflow-y-hidden touch-pan-x relative min-h-[200px] w-full max-w-full">
@@ -124,46 +126,51 @@ export default async function GithubActivity() {
                 <span className="font-semibold text-zinc-200">{totalContributions.toLocaleString()}</span> contributions in the last year
               </div>
               
-              <div className="flex">
-                <div className="flex flex-col gap-1 pr-3 pt-[1.5rem] text-[10px] text-zinc-500 font-medium">
-                  <span className="h-3 flex items-center justify-end"></span>
-                  <span className="h-3 flex items-center justify-end">Mon</span>
-                  <span className="h-3 flex items-center justify-end"></span>
-                  <span className="h-3 flex items-center justify-end">Wed</span>
-                  <span className="h-3 flex items-center justify-end"></span>
-                  <span className="h-3 flex items-center justify-end">Fri</span>
-                  <span className="h-3 flex items-center justify-end"></span>
-                </div>
+              <div className="p-6 rounded-2xl bg-black/20 border border-white/5 shadow-inner backdrop-blur-sm relative overflow-hidden group/container">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-transparent to-transparent opacity-0 group-hover/container:opacity-100 transition-opacity duration-700 pointer-events-none" />
                 
-                <div className="flex flex-col gap-2 flex-1 relative">
-                  <div className="relative h-4 text-[10px] text-zinc-500 font-medium w-full pointer-events-none">
-                    {monthLabels.map((m, idx) => (
-                      <span 
-                        key={idx} 
-                        className="absolute top-0" 
-                        style={{ left: `calc(${m.colIndex} * 1rem)` }}
-                      >
-                        {m.label}
-                      </span>
-                    ))}
+                <div className="flex relative z-10">
+                  <div className="flex flex-col gap-1 pr-3 pt-[1.5rem] text-[10px] text-zinc-500 font-medium">
+                    <span className="h-3 flex items-center justify-end"></span>
+                    <span className="h-3 flex items-center justify-end">Mon</span>
+                    <span className="h-3 flex items-center justify-end"></span>
+                    <span className="h-3 flex items-center justify-end">Wed</span>
+                    <span className="h-3 flex items-center justify-end"></span>
+                    <span className="h-3 flex items-center justify-end">Fri</span>
+                    <span className="h-3 flex items-center justify-end"></span>
                   </div>
-
-                  <div className="flex gap-1">
-                    {weeks.map((week: Week, i: number) => (
-                      <div key={i} className="flex flex-col gap-1">
-                        {week.contributionDays.map((day: ContributionDay, j: number) => (
-                          <div 
-                            key={`${i}-${j}`} 
-                            className={`w-3 h-3 rounded-sm ${getColor(day.contributionCount)} group relative`}
-                          >
-                            {/* Custom CSS Hover Tooltip */}
-                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block px-2.5 py-1.5 bg-[#222] text-xs text-zinc-300 rounded-md whitespace-nowrap z-50 shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-white/10 pointer-events-none">
-                              <span className="font-semibold text-white">{day.contributionCount > 0 ? day.contributionCount : "No"}</span> contributions on {new Date(day.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  
+                  <div className="flex flex-col gap-2 flex-1 relative">
+                    <div className="relative h-4 text-[10px] text-zinc-500 font-medium w-full pointer-events-none">
+                      {monthLabels.map((m, idx) => (
+                        <span 
+                          key={idx} 
+                          className="absolute top-0 transition-colors duration-300 group-hover/container:text-zinc-400" 
+                          style={{ left: `calc(${m.colIndex} * 1rem)` }}
+                        >
+                          {m.label}
+                        </span>
+                      ))}
+                    </div>
+  
+                    <div className="flex gap-1">
+                      {weeks.map((week: Week, i: number) => (
+                        <div key={i} className="flex flex-col gap-1">
+                          {week.contributionDays.map((day: ContributionDay, j: number) => (
+                            <div 
+                              key={`${i}-${j}`} 
+                              className={`w-3 h-3 rounded-sm ${getColor(day.contributionCount)} border border-white/5 group relative transition-all duration-300 hover:scale-150 hover:z-10 hover:shadow-[0_0_12px_rgba(74,222,128,0.6)] cursor-crosshair`}
+                            >
+                              {/* Custom CSS Hover Tooltip */}
+                              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 hidden group-hover:block px-3 py-2 bg-black/80 backdrop-blur-md text-xs text-zinc-300 rounded-lg whitespace-nowrap z-50 shadow-2xl border border-white/10 pointer-events-none animate-in fade-in zoom-in duration-200">
+                                <span className="font-semibold text-green-400">{day.contributionCount > 0 ? day.contributionCount : "No"}</span> contributions on {new Date(day.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/80 border-b border-r border-white/10 rotate-45"></div>
+                              </div>
                             </div>
-                          </div>
-                        ))}
-                      </div>
-                    ))}
+                          ))}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -172,10 +179,10 @@ export default async function GithubActivity() {
                 <span>Less</span>
                 <div className="flex gap-1">
                   <div className="w-3 h-3 rounded-sm bg-white/5" />
-                  <div className="w-3 h-3 rounded-sm bg-cyan-900/40" />
-                  <div className="w-3 h-3 rounded-sm bg-cyan-700/60" />
-                  <div className="w-3 h-3 rounded-sm bg-cyan-500/80" />
-                  <div className="w-3 h-3 rounded-sm bg-cyan-400" />
+                  <div className="w-3 h-3 rounded-sm bg-green-900/40" />
+                  <div className="w-3 h-3 rounded-sm bg-green-700/60" />
+                  <div className="w-3 h-3 rounded-sm bg-green-500/80" />
+                  <div className="w-3 h-3 rounded-sm bg-green-400" />
                 </div>
                 <span>More</span>
               </div>

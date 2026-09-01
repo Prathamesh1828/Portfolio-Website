@@ -4,6 +4,9 @@
   --logoloop-gap: 32px;
   --logoloop-logoHeight: 28px;
   --logoloop-fadeColorAuto: #ffffff;
+  --logoloop-duration: 0s;
+  --logoloop-seq-width: 0px;
+  --logoloop-seq-height: 0px;
 }
 
 .logoloop--vertical {
@@ -31,10 +34,34 @@
   z-index: 0;
 }
 
+/* Animations for seamless loop */
+.logoloop--horizontal .logoloop__track {
+  animation: logoloop-scroll-horizontal var(--logoloop-duration) linear infinite;
+}
+
 .logoloop--vertical .logoloop__track {
   flex-direction: column;
   height: max-content;
   width: 100%;
+  animation: logoloop-scroll-vertical var(--logoloop-duration) linear infinite;
+}
+
+.logoloop--reverse .logoloop__track {
+  animation-direction: reverse;
+}
+
+.logoloop--paused .logoloop__track {
+  animation-play-state: paused;
+}
+
+@keyframes logoloop-scroll-horizontal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-1 * var(--logoloop-seq-width))); }
+}
+
+@keyframes logoloop-scroll-vertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(calc(-1 * var(--logoloop-seq-height))); }
 }
 
 .logoloop__list {
@@ -173,6 +200,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .logoloop__track {
+    animation: none !important;
     transform: translate3d(0, 0, 0) !important;
   }
 
