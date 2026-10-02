@@ -133,7 +133,7 @@ export function Hero() {
               className="text-base md:text-xl text-zinc-400 mb-10 leading-relaxed font-light transition-colors duration-500 group-hover/text:text-zinc-200"
             >
               Hi, I&apos;m <span className="text-white font-medium">Prathamesh Jaiswar</span>, 
-              an AI Engineer focused on Agentic AI, Generative AI, backend engineering, and intelligent automation. I build production-ready AI systems that connect LLMs, APIs, data, and real-world workflows.
+              an aspiring AI Engineer focused on Agentic AI, Generative AI, backend engineering, and intelligent automation. I build production-ready AI systems that connect LLMs, APIs, data, and real-world workflows.
             </motion.p>
 
             <motion.div 

@@ -94,15 +94,15 @@ export default async function GithubActivity() {
   });
 
   const getColor = (count: number) => {
-    if (count === 0) return "bg-white/5";
-    if (maxCount === 0) return "bg-white/5";
+    if (count === 0) return "bg-[#161b22]";
+    if (maxCount === 0) return "bg-[#161b22]";
     
     // Scale intensity (1-4) based on max contributions
     const ratio = count / maxCount;
-    if (ratio <= 0.25) return "bg-green-900/40";
-    if (ratio <= 0.5) return "bg-green-700/60";
-    if (ratio <= 0.75) return "bg-green-500/80";
-    return "bg-green-400";
+    if (ratio <= 0.25) return "bg-[#0e4429]";
+    if (ratio <= 0.5) return "bg-[#006d32]";
+    if (ratio <= 0.75) return "bg-[#26a641]";
+    return "bg-[#39d353]";
   };
 
   return (
@@ -182,11 +182,11 @@ export default async function GithubActivity() {
               <div className="flex justify-end items-center gap-2 mt-2 text-xs text-zinc-500">
                 <span>Less</span>
                 <div className="flex gap-1">
-                  <div className="w-3 h-3 rounded-sm bg-white/5" />
-                  <div className="w-3 h-3 rounded-sm bg-green-900/40" />
-                  <div className="w-3 h-3 rounded-sm bg-green-700/60" />
-                  <div className="w-3 h-3 rounded-sm bg-green-500/80" />
-                  <div className="w-3 h-3 rounded-sm bg-green-400" />
+                  <div className="w-3 h-3 rounded-sm bg-[#161b22]" />
+                  <div className="w-3 h-3 rounded-sm bg-[#0e4429]" />
+                  <div className="w-3 h-3 rounded-sm bg-[#006d32]" />
+                  <div className="w-3 h-3 rounded-sm bg-[#26a641]" />
+                  <div className="w-3 h-3 rounded-sm bg-[#39d353]" />
                 </div>
                 <span>More</span>
               </div>

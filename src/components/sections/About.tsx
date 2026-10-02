@@ -10,7 +10,7 @@ export function About() {
         <GlassCard className="grid gap-6 md:grid-cols-2">
           <div className="space-y-4 text-zinc-400 leading-relaxed text-sm md:text-base">
             <p>
-              I'm an AI Engineer & Backend Developer currently pursuing a Bachelor of Engineering in Computer Science 
+              I'm an aspiring AI Engineer & Backend Developer currently pursuing a Bachelor of Engineering in Computer Science 
               at Universal College of Engineering (2023–2027).
             </p>
             <p>
