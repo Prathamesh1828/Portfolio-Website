@@ -11,6 +11,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "inboxpilot",
+    title: "InboxPilot",
+    description: "An AI agent that turns an inbox into an automated workflow. It reads emails, figures out the intent, and extracts structured data to take action. The core focus is safety—it handles low-risk tasks like archiving in the background, but pauses high-risk actions (like sending replies). For risky tasks, it pings you via Telegram so you can quickly review and approve the AI's plan on the Next.js dashboard.",
+    techStack: ["FastAPI", "Next.js", "Groq/Gemini", "Celery", "PostgreSQL", "Redis", "Tailwind CSS"],
+    githubLink: "https://github.com/Prathamesh1828/InboxPilot",
+    liveLink: "https://inboxpilotai.vercel.app/",
+    imagePath: "/projects/inboxpilot_logo.png",
+  },
+  {
     id: "replylink",
     title: "ReplyLink",
     description: "AI-powered Instagram automation platform for creators and businesses, automating comments, DMs, and story interactions while using AI to handle conversations, answer FAQs, and turn engagement into customers.",

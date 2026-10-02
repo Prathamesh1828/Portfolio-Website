@@ -30,7 +30,6 @@ export function GlobalBackground() {
       "what-i-build", 
       "featured-project", 
       "projects", 
-      "currently-building", 
       "skills", 
       "github", 
       "leetcode", 
@@ -77,31 +76,7 @@ export function GlobalBackground() {
         <div className="w-[150vw] h-[150vh] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-600/40 via-blue-600/20 to-cyan-500/30 blur-[150px] rounded-full mix-blend-screen" />
       </motion.div>
 
-      {/* Currently Building: Abstract AI Nodes */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: activeSection === "currently-building" ? (prefersReducedMotion ? 0.05 : 0.08) : 0 }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-        className="absolute inset-0 flex items-center justify-start pl-[10vw]"
-      >
-        <svg
-          width="400"
-          height="400"
-          viewBox="0 0 200 200"
-          className="text-cyan-500/20 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]"
-        >
-          {/* Abstract Nodes and Connections */}
-          <circle cx="50" cy="50" r="3" fill="currentColor" />
-          <circle cx="150" cy="80" r="4" fill="currentColor" />
-          <circle cx="80" cy="150" r="3" fill="currentColor" />
-          <circle cx="120" cy="30" r="2" fill="currentColor" />
-          <circle cx="180" cy="140" r="3" fill="currentColor" />
-          
-          <path d="M50 50 L150 80 L80 150 Z" stroke="currentColor" strokeWidth="0.5" fill="none" />
-          <path d="M120 30 L50 50 L80 150 L180 140 Z" stroke="currentColor" strokeWidth="0.5" fill="none" />
-          <path d="M150 80 L180 140" stroke="currentColor" strokeWidth="0.5" fill="none" />
-        </svg>
-      </motion.div>
+
 
       {/* Developer Activity: GitHub Logo */}
       <motion.div

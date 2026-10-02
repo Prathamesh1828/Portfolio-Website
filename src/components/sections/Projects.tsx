@@ -29,7 +29,7 @@ const itemVariants = {
 } as any;
 
 export function Projects() {
-  const otherProjects = projects.slice(1);
+  const otherProjects = projects.slice(2);
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
 
   const activeProject = otherProjects.find(p => p.id === activeProjectId);

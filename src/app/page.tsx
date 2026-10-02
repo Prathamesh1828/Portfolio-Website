@@ -7,7 +7,6 @@ import { WhatIBuild } from "@/components/sections/WhatIBuild";
 import { FeaturedProject } from "@/components/sections/FeaturedProject";
 import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
-import { CurrentlyBuilding } from "@/components/sections/CurrentlyBuilding";
 import { Contact } from "@/components/sections/Contact";
 
 import GithubActivity from "@/components/sections/GithubActivity";
@@ -21,7 +20,6 @@ export default function Home() {
       <WhatIBuild />
       <Experience />
       <FeaturedProject />
-      <CurrentlyBuilding />
       <Projects />
       <Skills />
       <Suspense fallback={
