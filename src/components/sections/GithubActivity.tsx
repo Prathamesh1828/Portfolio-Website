@@ -114,14 +114,14 @@ export default async function GithubActivity() {
           </h2>
         </div>
         
-        <GlassCard className="p-5 md:p-8 overflow-x-auto overflow-y-hidden touch-pan-x relative min-h-[200px] w-full max-w-full">
+        <GlassCard className="p-4 sm:p-5 md:p-8 overflow-hidden relative min-h-[200px] w-full max-w-full">
           {!calendar ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                <div className="w-6 h-6 rounded-full border-2 border-white/10 border-t-white/40 animate-spin" />
                <span className="text-sm text-zinc-500">Unable to load contribution data. Ensure GITHUB_TOKEN is set.</span>
             </div>
           ) : (
-            <div className="min-w-[700px] flex flex-col gap-4">
+            <div className="w-full flex flex-col gap-4">
               <div className="text-sm text-zinc-400">
                 <span className="font-semibold text-zinc-200">{totalContributions.toLocaleString()}</span> contributions in the last year
               </div>
@@ -129,37 +129,37 @@ export default async function GithubActivity() {
               <div className="p-6 rounded-2xl bg-black/20 border border-white/5 shadow-inner backdrop-blur-sm relative group/container">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500/5 via-transparent to-transparent opacity-0 group-hover/container:opacity-100 transition-opacity duration-700 pointer-events-none" />
                 
-                <div className="flex relative z-10">
-                  <div className="flex flex-col gap-1 pr-3 pt-[1.5rem] text-[10px] text-zinc-500 font-medium">
-                    <span className="h-3 flex items-center justify-end"></span>
-                    <span className="h-3 flex items-center justify-end">Mon</span>
-                    <span className="h-3 flex items-center justify-end"></span>
-                    <span className="h-3 flex items-center justify-end">Wed</span>
-                    <span className="h-3 flex items-center justify-end"></span>
-                    <span className="h-3 flex items-center justify-end">Fri</span>
-                    <span className="h-3 flex items-center justify-end"></span>
+                <div className="flex relative z-10 overflow-hidden">
+                  <div className="hidden sm:flex flex-col gap-[2px] sm:gap-[3px] lg:gap-1 pr-2 pt-[1.5rem] text-[8px] md:text-[10px] text-zinc-500 font-medium">
+                    <span className="w-[14px] md:w-[20px] h-[7px] md:h-[9px] lg:h-3 flex items-center justify-end"></span>
+                    <span className="w-[14px] md:w-[20px] h-[7px] md:h-[9px] lg:h-3 flex items-center justify-end">Mon</span>
+                    <span className="w-[14px] md:w-[20px] h-[7px] md:h-[9px] lg:h-3 flex items-center justify-end"></span>
+                    <span className="w-[14px] md:w-[20px] h-[7px] md:h-[9px] lg:h-3 flex items-center justify-end">Wed</span>
+                    <span className="w-[14px] md:w-[20px] h-[7px] md:h-[9px] lg:h-3 flex items-center justify-end"></span>
+                    <span className="w-[14px] md:w-[20px] h-[7px] md:h-[9px] lg:h-3 flex items-center justify-end">Fri</span>
+                    <span className="w-[14px] md:w-[20px] h-[7px] md:h-[9px] lg:h-3 flex items-center justify-end"></span>
                   </div>
                   
-                  <div className="flex flex-col gap-2 flex-1 relative">
+                  <div className="flex flex-col gap-2 flex-1 relative [--cell-size:5px] min-[400px]:[--cell-size:6px] sm:[--cell-size:10px] md:[--cell-size:12px] lg:[--cell-size:16px]">
                     <div className="relative h-4 text-[10px] text-zinc-500 font-medium w-full pointer-events-none">
                       {monthLabels.map((m, idx) => (
                         <span 
                           key={idx} 
                           className="absolute top-0 transition-colors duration-300 group-hover/container:text-zinc-400" 
-                          style={{ left: `calc(${m.colIndex} * 1rem)` }}
+                          style={{ left: `calc(${m.colIndex} * var(--cell-size))` }}
                         >
                           {m.label}
                         </span>
                       ))}
                     </div>
   
-                    <div className="flex gap-1">
+                    <div className="flex gap-[2px] sm:gap-[3px] lg:gap-1">
                       {weeks.map((week: Week, i: number) => (
-                        <div key={i} className="flex flex-col gap-1">
+                        <div key={i} className="flex flex-col gap-[2px] sm:gap-[3px] lg:gap-1">
                           {week.contributionDays.map((day: ContributionDay, j: number) => (
                             <div 
                               key={`${i}-${j}`} 
-                              className={`w-3 h-3 rounded-sm ${getColor(day.contributionCount)} border border-white/5 group relative transition-all duration-300 hover:scale-150 hover:z-10 hover:shadow-[0_0_12px_rgba(74,222,128,0.6)] cursor-crosshair`}
+                              className={`w-[3px] h-[3px] min-[400px]:w-[4px] min-[400px]:h-[4px] sm:w-[7px] sm:h-[7px] md:w-[9px] md:h-[9px] lg:w-3 lg:h-3 rounded-[1px] lg:rounded-sm ${getColor(day.contributionCount)} border border-white/5 group relative transition-all duration-300 hover:scale-150 hover:z-10 hover:shadow-[0_0_12px_rgba(74,222,128,0.6)] cursor-crosshair`}
                             >
                               {/* Custom CSS Hover Tooltip */}
                               <div className={`absolute bottom-full mb-3 hidden group-hover:block px-3 py-2 bg-black/80 backdrop-blur-md text-xs text-zinc-300 rounded-lg whitespace-nowrap z-50 shadow-2xl border border-white/10 pointer-events-none animate-in fade-in zoom-in duration-200 ${
