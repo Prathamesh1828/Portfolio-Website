@@ -18,6 +18,7 @@ export const projects: Project[] = [
     githubLink: "https://github.com/Prathamesh1828/InboxPilot",
     liveLink: "https://inboxpilotai.vercel.app/",
     imagePath: "/projects/inboxpilot_logo.png",
+    videoPath: "/projects/InboxPilot demo video.mp4",
   },
   {
     id: "replylink",
