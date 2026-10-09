@@ -180,8 +180,24 @@ export function Hero() {
                   boxShadow: "0 0 40px rgba(255, 255, 255, 0.1)"
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="group flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/10 bg-transparent text-white font-bold transition-all duration-300 w-full sm:w-auto sm:min-w-[140px]"
+                className="group relative flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/10 bg-transparent text-white font-bold transition-all duration-300 w-full sm:w-auto sm:min-w-[140px]"
               >
+                {/* Attention Grabber Tooltip */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 2, duration: 0.5 }}
+                  className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none"
+                >
+                  <div className="relative animate-bounce">
+                    <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                      Download my latest resume
+                    </div>
+                    {/* Triangle pointer */}
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rotate-45 rounded-sm" />
+                  </div>
+                </motion.div>
+
                 <div className="relative w-5 h-5 flex items-center justify-center overflow-visible">
                     <motion.div
                         animate={isDownloading ? { y: [0, 15, -15, 0] } : {}}
